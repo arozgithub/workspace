@@ -53,7 +53,13 @@ export default function JobCard({ job, onUpdateStatus }: JobCardProps) {
           
           <div className="flex items-center gap-2">
             <Clock size={16} className="text-muted-foreground" />
-            <span>Logged: {format(job.dateLogged, 'HH:mm')}</span>
+            <span>
+              Logged: {
+                job.dateLogged && !isNaN(new Date(job.dateLogged).getTime())
+                  ? format(new Date(job.dateLogged), 'HH:mm')
+                  : 'N/A'
+              }
+            </span>
           </div>
         </div>
         

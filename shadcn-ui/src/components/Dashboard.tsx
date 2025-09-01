@@ -18,14 +18,14 @@ export default function Dashboard({ jobs, onUpdateStatus }: DashboardProps) {
 
   const filteredJobs = jobs.filter(job => {
     const matchesSearch = 
-      job.jobNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      job.customer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      job.site.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      job.contact.name.toLowerCase().includes(searchQuery.toLowerCase());
-    
+      ((job.jobNumber ?? '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (job.customer ?? '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (job.site ?? '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      ((job.contact?.name ?? '').toLowerCase().includes(searchQuery.toLowerCase())));
+
     const matchesStatus = statusFilter === 'all' || job.status === statusFilter;
     const matchesPriority = priorityFilter === 'all' || job.priority === priorityFilter;
-    
+
     return matchesSearch && matchesStatus && matchesPriority;
   });
 

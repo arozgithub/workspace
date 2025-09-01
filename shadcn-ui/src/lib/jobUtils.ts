@@ -1,4 +1,4 @@
-import { Job } from '@/types/job';
+import { Job, Engineer } from '@/types/job';
 import { differenceInMinutes } from 'date-fns';
 
 export const updateJobStatus = (job: Job): Job => {
@@ -74,6 +74,21 @@ export const getPriorityColor = (priority: Job['priority']) => {
   }
 };
 
+export const getEngineerStatusColor = (status: Engineer['status']) => {
+  switch (status) {
+    case 'available':
+      return 'bg-green-500';
+    case 'busy':
+      return 'bg-amber-500';
+    case 'holiday':
+      return 'bg-blue-500';
+    case 'offline':
+      return 'bg-gray-500';
+    default:
+      return 'bg-gray-500';
+  }
+};
+
 export const generateJobNumber = (): string => {
   return `JL-${Date.now()}`;
 };
@@ -86,6 +101,36 @@ export const mockCustomers = [
   { id: 5, name: 'Echo Systems', sites: ['Site I - Liverpool', 'Site J - Newcastle'] },
 ];
 
-export const mockEngineers = [
-  'John Doe', 'Tom Brown', 'Sara Lee', 'Ali Hamza', 'Jane Smith', 'Mike Johnson'
+export const mockEngineers: Engineer[] = [
+  { name: 'John Doe', status: 'available' },
+  { name: 'Tom Brown', status: 'busy' },
+  { name: 'Sara Lee', status: 'available' },
+  { name: 'Ali Hamza', status: 'holiday' },
+  { name: 'Jane Smith', status: 'available' },
+  { name: 'Mike Johnson', status: 'offline' }
+];
+
+export const mockJobTrades = [
+  'Electrical',
+  'Plumbing',
+  'HVAC',
+  'Mechanical',
+  'General Maintenance',
+  'Carpentry',
+  'Painting',
+  'Cleaning',
+  'Security',
+  'IT Support'
+];
+
+export const mockTags = [
+  'Urgent',
+  'Scheduled',
+  'Warranty',
+  'Emergency',
+  'Preventive',
+  'Reactive',
+  'Out of Hours',
+  'Weekend',
+  'Holiday'
 ];
