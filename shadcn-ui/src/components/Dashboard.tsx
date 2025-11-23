@@ -42,7 +42,7 @@ export default function Dashboard({ jobs, onUpdateStatus }: DashboardProps) {
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Job Dashboard</h1>
         <p className="text-muted-foreground mt-2">
-          Monitor and manage all active jobs
+          Monitor and manages all the active jobs :)
         </p>
       </div>
 
